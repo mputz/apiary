@@ -1,11 +1,11 @@
 FORMAT: 1A
 
-# tr02
+# TR02
 This enables the registration of containers in the harbour of Hamburg
 
 
-# Gist Fox API Root [/]
-Gist Fox API entry point.
+# TR02 Root [/]
+TR02 entry point.
 
 This resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and HAL links.
 
@@ -24,6 +24,52 @@ This resource does not have any attributes. Instead it offers the initial API af
                     "gists": { "href": "/gists?{since}", "templated": true }
                 }
             }
+
+## Container Collection [/container]
+Alle Container from the logged in user
+
+### Liste aller bisherigen Container [GET]
++ Response 200 (application/hal+json)
+
+
+## Container [/container/{id}]
+Einzelner Container
++ Parameter
+    + id (required, number)
+
+### Container [GET]
++ Response 200 (application/json)
+        {
+            'id': 1,
+            'Container-Number': 'DAKU1234567',
+            'Container-ISOCode' : '22G1'
+            'Container-Empty': true,
+            'Container-Oversized': false,
+            'Container-GrossWeight': 1234,
+            'Carrier-ReleaseNumber': 'Freistellref01',
+            'DangerousGoodsIndicator': false,
+            'CustomsIndicator': false
+        }
+
+## TransportCoordination Collection [/transport]
+All transport coordinations from the logged in user
+
+### Liste aller bisherigen Transporte [GET]
++ Response 200 (application/json)
+    
+
+
+## Liste eines Transportauftrages [/transport/{id}]
+A single transport object
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the transport to perform action with
+
+### Transport [GET]
++ Response 200 (application/json)
+        {
+            
+        }
+
 
 # Group Notes
 Notes related resources of the **Notes API**
