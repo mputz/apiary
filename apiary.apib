@@ -1,8 +1,29 @@
 FORMAT: 1A
-HOST: http://www.google.com
 
-# testing
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+# tr02
+This enables the registration of containers in the harbour of Hamburg
+
+
+# Gist Fox API Root [/]
+Gist Fox API entry point.
+
+This resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and HAL links.
+
+## Retrieve Entry Point [GET]
+
++ Response 200 (application/hal+json)
+    + Headers
+
+            Link: <http:/api.gistfox.com/>;rel="self",<http:/api.gistfox.com/gists>;rel="gists"
+
+    + Body
+
+            {
+                "_links": {
+                    "self": { "href": "/" },
+                    "gists": { "href": "/gists?{since}", "templated": true }
+                }
+            }
 
 # Group Notes
 Notes related resources of the **Notes API**
