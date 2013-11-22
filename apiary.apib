@@ -22,15 +22,53 @@ This resource does not have any attributes. Instead it offers the initial API af
                 "_links": {
                     "self": { "href": "/" },
                     "gists": { "href": "/gists?{since}", "templated": true },
-                    "containers": {"href":"/containers", "templated": true}
+                    "containers": { "href": "/containers", "templated": true}
                 }
             }
 
-## Container Collection [/container]
+
+# Group Container
+Alle Ressourcen für einen Container
+
+## Container Collection [/containers]
 Alle Container from the logged in user
+
++ Model (application/hal+json)
+
+    HAL+JSON representation of container Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.
+    
+    Header ist auch möglich
+
+
+    + Body
+
+            {
+                "_links": {
+                    "self": { "href": "/gists/42" },
+                    "star": { "href": "/gists/42/star" },
+                },
+                "id": "42",
+                "created_at": "2014-04-14T02:15:15Z",
+                "description": "Description of Gist",
+                "content": "String contents"
+            }
+
+    + Schema
+    
+            {
+                "test" : "asdf"
+
+            }
 
 ### Liste aller bisherigen Container [GET]
 + Response 200 (application/hal+json)
+
+### Erstellt neuen Container [PUT]
++ Request (application/json)
+
+        [Container][]
+
++ Response 201 (application/hal+json)
 
 
 ## Container [/container/{id}]
@@ -38,7 +76,7 @@ Einzelner Container
 + Parameter
     + id (required, number)
 
-### Container [GET]
+### Zeigt einen Container [GET]
 + Response 200 (application/json)
 
         {
@@ -52,6 +90,10 @@ Einzelner Container
             'DangerousGoodsIndicator': false,
             'CustomsIndicator': false
         }
+
+### Updated einen Container [PATCH]
++ Response 204
+
 
 ## TransportCoordination Collection [/transport]
 All transport coordinations from the logged in user
